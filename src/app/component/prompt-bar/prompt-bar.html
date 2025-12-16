@@ -1,9 +1,8 @@
 <form id="search-input-wrapper">
   <label>
-    <input type="text">
+    <input type="text" [(ngModel)]="promptText" placeholder="Enter command...">
   </label>
-  <button type="submit" class="search-button">
-    <!-- You can use a magnifying glass icon here -->
+  <button (click)="submitPrompt()" type="submit" id="search-button">
     SEARCH
   </button>
 </form>

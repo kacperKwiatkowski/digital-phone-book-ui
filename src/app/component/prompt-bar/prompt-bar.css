@@ -16,7 +16,7 @@ input {
   font-family: 'Inter', sans-serif;
 }
 
-.search-button {
+#search-button {
   padding: 10px 15px;
   border: 2px solid #ddd;
   border-radius: 0 20px 20px 0;
@@ -28,6 +28,6 @@ input {
   font-family: 'Inter', sans-serif;
 }
 
-.search-button:hover {
+#search-button:hover {
   background-color: #b6b6b6; /* Darker blue on hover */
 }
