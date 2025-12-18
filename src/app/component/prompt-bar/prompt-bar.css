@@ -2,32 +2,59 @@
 #search-input-wrapper {
   display: flex;
   justify-content: center;
-  padding: 10px;
+  margin: 20px;
+  width: 100%;
 }
 
 input {
+  /*flex: 1;                  !* take remaining horizontal space *!*/
+  /*min-width: 0;             !* prevents overflow in flexbox *!*/
+  width: 70%;
+
   padding: 15px 15px 15px 20px;
-  border: 2px solid #ddd;
+  border: 1px solid #ddd;
   border-right-width: 0;
   border-radius: 20px 0 0 20px;
   font-size: 16px;
-  outline: none;
-  width: 550px;
   font-family: 'Inter', sans-serif;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/*input {*/
+/*  padding: 15px 15px 15px 20px;*/
+/*  color: #797979;*/
+/*  border: 1px solid #ddd;*/
+/*  border-right-width: 0;*/
+/*  border-radius: 20px 0 0 20px;*/
+/*  font-size: 16px;*/
+/*  !*outline: none;*!*/
+/*  font-family: 'Inter', sans-serif;*/
+/*  transition: background-color 0.3s ease, transform 0.2s ease;*/
+/*}*/
+
+input:hover, input:focus {
+  transform: scale(1.005);
+  color: brown;
+}
+
+input:hover::placeholder, input:focus {
+  transform: scale(1.005);
+  color: brown;
 }
 
 #search-button {
-  padding: 10px 15px;
-  border: 2px solid #ddd;
-  border-radius: 0 20px 20px 0;
-  cursor: pointer;
-  font-size: 16px;
+  padding: 5px 15px 5px 15px;
+  border: none;
+  background-color: #efefef;
   color: #797979;
+  font-size: 16px;
   width: 150px;
-
-  font-family: 'Inter', sans-serif;
+  border-radius: 0 20px 20px 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#search-button:hover {
+#search-button:hover, #search-button:focus {
   background-color: #b6b6b6; /* Darker blue on hover */
+  transform: scale(1.05);
+  color: brown;
 }

@@ -1,23 +1,39 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ResultsBar } from './results-bar';
+import {BehaviorSubject, of} from 'rxjs';
+import {RecordDto} from '../../model/RecordDto';
+import {ResultsBar} from './results-bar';
+import {TestBed} from '@angular/core/testing';
+import RecordService from '../../service/record.service';
 
 describe('ResultsBar', () => {
+  const REFRESH_SUBJECT = new BehaviorSubject<void>(undefined);
+  const ENTRIES: RecordDto[] = [{ name: 'John', number: '123' } as RecordDto];
+
   let component: ResultsBar;
-  let fixture: ComponentFixture<ResultsBar>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ResultsBar]
-    })
-    .compileComponents();
+    const recordServiceMock = {
+      refresh$: REFRESH_SUBJECT.asObservable(),
+      getAllEntries: () => of(ENTRIES),
+    };
 
-    fixture = TestBed.createComponent(ResultsBar);
-    component = fixture.componentInstance;
-    await fixture.whenStable();
+    await TestBed.configureTestingModule({
+      imports: [ResultsBar],
+      providers: [
+        { provide: RecordService, useValue: recordServiceMock },
+      ],
+    }).compileComponents();
+
+    component = TestBed.createComponent(ResultsBar).componentInstance;
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should load entries when refresh emits', () => {
+    component.ngOnInit();
+
+    let result: RecordDto[] | undefined;
+    component.record$.subscribe(r => (result = r));
+
+    REFRESH_SUBJECT.next();
+
+    expect(result).toEqual(ENTRIES);
   });
 });

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {PhoneNumberService} from '../../service/phone-number-service';
+import RecordService from '../../service/record.service';
 
 @Component({
   selector: 'app-prompt-bar',
@@ -12,15 +12,25 @@ import {PhoneNumberService} from '../../service/phone-number-service';
 })
 export class PromptBar {
 
-  constructor(
-    private  phoneNumberService: PhoneNumberService,
-  ) {}
+  promptText: string = '';
 
-  protected promptText: string = "";
+  constructor(private recordService: RecordService) {}
 
   submitPrompt() {
-    this.phoneNumberService.postPrompt(this.promptText);
+    if (!this.promptText.trim()) return;
 
+    console.log("Passing prompt text to server:", this.promptText);
 
+    this.recordService.postPrompt(this.promptText).subscribe({
+      next: (response)  => {
+        this.recordService.notifyRefresh();
+        this.recordService.pushAction(response);
+        this.promptText = '';
+      },
+      error: (err) => {
+        console.error('Failed to add prompt', err.error)
+        this.recordService.pushAction(err.error);
+      }
+    });
   }
 }

@@ -10,5 +10,4 @@ import {HomePage} from './layout/home-page/home-page';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('digital-phone-book-ui');
 }

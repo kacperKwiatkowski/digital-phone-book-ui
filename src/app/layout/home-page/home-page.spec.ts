@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomePage } from './home-page';
 
 describe('HomePage', () => {
@@ -8,16 +7,15 @@ describe('HomePage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePage]
-    })
-    .compileComponents();
+      imports: [HomePage],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
-    await fixture.whenStable();
   });
 
   it('should create', () => {
+    // then
     expect(component).toBeTruthy();
   });
 });

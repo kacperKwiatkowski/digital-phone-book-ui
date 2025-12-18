@@ -1,1 +1,8 @@
-<p>results-bar works!</p>
+<div id="record-cards-wrapper">
+  @for (record of (record$ | async); track record.number) {
+    <app-record-card
+      [name]="record.name"
+      [number]="record.number">
+    </app-record-card>
+  }
+</div>

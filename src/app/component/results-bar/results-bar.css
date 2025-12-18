@@ -1,0 +1,41 @@
+#record-cards-wrapper {
+  margin: 20px;
+}
+
+#record-cards-wrapper > app-record-card:hover {
+  color: brown;
+  transform: scale(1.005);
+}
+
+#record-cards-wrapper > app-record-card {
+  justify-content: space-between;
+  border-left: 1px solid #ddd;   /* left border */
+  border-right: 1px solid #ddd;
+  display: flex;
+  padding: 5px 15px 5px 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#record-cards-wrapper > app-record-card:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+#record-cards-wrapper > app-record-card:nth-child(even) {
+  background-color: #efefef;
+}
+
+#record-cards-wrapper > app-record-card {
+  background-color: #dcdcdc;
+  border-bottom: 1px solid #ddd;
+  height: 20px;
+  color: #797979;
+}
+
+#record-cards-wrapper > app-record-card:first-child{
+  border-radius: 20px 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+#record-cards-wrapper > app-record-card:last-child{
+  border-radius: 0 0 20px 20px;
+}

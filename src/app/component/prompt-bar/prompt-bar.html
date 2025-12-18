@@ -1,10 +1,8 @@
-<form id="search-input-wrapper">
-  <label>
-    <input type="text" [(ngModel)]="promptText" placeholder="Enter command...">
-  </label>
+<div id="search-input-wrapper">
+  <input type="text" [(ngModel)]="promptText" placeholder="Enter command...">
   <button (click)="submitPrompt()" type="submit" id="search-button">
-    SEARCH
+    RUN
   </button>
-</form>
+</div>
 
 
