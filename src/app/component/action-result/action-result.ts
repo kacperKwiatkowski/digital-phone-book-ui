@@ -17,7 +17,7 @@ import {CommonModule} from '@angular/common';
 })
 export class ActionResult implements OnInit {
 
-  actionMessage$!: Observable<string>;
+  actionMessage$!: Observable<string | null>;
 
   constructor(private recordService: RecordService) {
   }
@@ -26,7 +26,8 @@ export class ActionResult implements OnInit {
     this.actionMessage$ = this.recordService.action$;
   }
 
-  protected closeMessage() {
-    this.actionMessage$.pipe().subscribe();
+  closeMessage() {
+    console.log("closeMessage")
+    this.recordService.flushAction()
   }
 }

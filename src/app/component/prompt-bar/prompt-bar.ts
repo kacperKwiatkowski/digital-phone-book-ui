@@ -19,8 +19,6 @@ export class PromptBar {
   submitPrompt() {
     if (!this.promptText.trim()) return;
 
-    console.log("Passing prompt text to server:", this.promptText);
-
     this.recordService.postPrompt(this.promptText).subscribe({
       next: (response)  => {
         this.recordService.notifyRefresh();
@@ -28,7 +26,6 @@ export class PromptBar {
         this.promptText = '';
       },
       error: (err) => {
-        console.error('Failed to add prompt', err.error)
         this.recordService.pushAction(err.error);
       }
     });

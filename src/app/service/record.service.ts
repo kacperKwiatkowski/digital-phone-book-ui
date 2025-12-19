@@ -15,7 +15,7 @@ export class RecordService {
   private refreshSubject = new BehaviorSubject<void>(undefined);
   refresh$ = this.refreshSubject.asObservable();
 
-  private actionSubject = new ReplaySubject<string>(1);
+  private actionSubject = new BehaviorSubject<string | null>(null);
   action$ = this.actionSubject.asObservable();
 
   constructor(
@@ -24,32 +24,25 @@ export class RecordService {
   }
 
   postPrompt(inputText: any): Observable<any> {
-    console.log("This is phone number service posting prompt init:");
     return this.http.post(this.SERVER_URL, {
       prompt: inputText
     });
   }
 
   getAllEntries(): Observable<RecordDto[]> {
-    console.log("Getting all entries from server");
     return this.http.get<RecordDto[]>(this.SERVER_URL + this.GET_ALL_ENTRIES_URL_SUFFIX)
       .pipe(
         catchError((err) => {
-          console.log(err)
           return throwError(() => err);
         })
       )
   }
 
   notifyRefresh() {
-    console.log("Notifying refresh subscribers");
     this.refreshSubject.next();
   }
 
   pushAction(promptResponse: PromptResponse) {
-    console.log("Pushing action to subscribers");
-    console.log(promptResponse.operation);
-    console.log(promptResponse);
     switch (promptResponse.operation) {
       case "CREATE":
         this.actionSubject.next("Record added: " + promptResponse.record.name + " " + promptResponse.record.number);
@@ -64,11 +57,15 @@ export class RecordService {
         this.actionSubject.next("Record deleted: " + promptResponse.record.name + " " + promptResponse.record.number);
         break;
       case "ERROR":
-        console.error(promptResponse.message);
         this.actionSubject.next("Error message: " + promptResponse.message);
         break;
       default:
     }
+  }
+
+
+  flushAction(): void {
+    this.actionSubject.next(null);
   }
 }
 
