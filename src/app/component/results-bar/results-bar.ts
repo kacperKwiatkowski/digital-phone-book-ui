@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RecordDto} from '../../model/RecordDto';
 import RecordService from '../../service/record.service';
 import {Observable, switchMap} from 'rxjs';

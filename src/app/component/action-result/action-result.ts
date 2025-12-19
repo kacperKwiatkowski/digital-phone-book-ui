@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import RecordService from '../../service/record.service';
-import {Observable, switchMap} from 'rxjs';
-import {RecordDto} from '../../model/RecordDto';
+import {Observable} from 'rxjs';
 import {AsyncPipe, NgIf} from '@angular/common';
-import {RecordCard} from '../record-card/record-card';
-import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-action-result',

@@ -8,9 +8,6 @@ describe('RecordService', () => {
   let service: RecordService;
   let httpMock: HttpTestingController;
 
-  const SERVER_URL = 'http://localhost:8080/api/v.1.0/record';
-  const GET_ALL_SUFFIX = '/all';
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -100,7 +97,7 @@ describe('RecordService', () => {
     it('should emit CREATE message', () => {
       // given
       const response = createPromptResponse('CREATE');
-      let message!: string;
+      let message: string | null = null;
 
       service.action$.subscribe(msg => (message = msg));
 
@@ -113,7 +110,7 @@ describe('RecordService', () => {
 
     it('should emit READ message', () => {
       const response = createPromptResponse('READ');
-      let message!: string;
+      let message: string | null = null;
 
       service.action$.subscribe(msg => (message = msg));
 
@@ -124,7 +121,7 @@ describe('RecordService', () => {
 
     it('should emit UPDATE message', () => {
       const response = createPromptResponse('UPDATE');
-      let message!: string;
+      let message: string | null = null;
 
       service.action$.subscribe(msg => (message = msg));
 
@@ -135,7 +132,7 @@ describe('RecordService', () => {
 
     it('should emit DELETE message', () => {
       const response = createPromptResponse('DELETE');
-      let message!: string;
+      let message: string | null = null;
 
       service.action$.subscribe(msg => (message = msg));
 
@@ -151,7 +148,7 @@ describe('RecordService', () => {
         message: 'Something went wrong',
       } as PromptResponse;
 
-      let message!: string;
+      let message: string | null = null;
       service.action$.subscribe(msg => (message = msg));
 
       // when

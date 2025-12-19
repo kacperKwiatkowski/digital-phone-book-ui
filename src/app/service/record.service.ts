@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, catchError, Observable, ReplaySubject, throwError} from 'rxjs';
+import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
 import {RecordDto} from '../model/RecordDto';
 import {PromptResponse} from '../model/PromptResponse';
 
@@ -62,7 +62,6 @@ export class RecordService {
       default:
     }
   }
-
 
   flushAction(): void {
     this.actionSubject.next(null);

@@ -1,5 +1,4 @@
 export class RecordDto {
-  // id: number;
   name: string;
   number: string;
 

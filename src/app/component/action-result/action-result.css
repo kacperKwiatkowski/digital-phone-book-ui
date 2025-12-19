@@ -1,38 +1,39 @@
 #action-wrapper {
-  margin: 20px;
-  color: brown;
-  border: 1px solid brown;
-  border-radius: 20px;
   display: flex;
-  justify-content: space-between;
-  height: 30px;
-  font-size: 16px;
+  justify-content: center;
+  margin: 20px;
+  width: 100%;
 }
 
 #action-message {
   padding: 5px 15px 5px 15px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  height: 20px;
+  width: 60%;
+
+  border: 1px solid brown;
+  border-right-width: 0;
+  border-radius: 20px 0 0 20px;
+  font-size: 16px;
+
+  color: brown;
 }
 
 button {
-
   padding: 5px 15px 5px 15px;
   border: none;
   background-color: brown;
   color: white;
   font-size: 16px;
-  height: 30px;
-  width: 120px;
+  width: 150px;
   border-radius: 0 20px 20px 0;
   transition: background-color 0.3s ease, transform 0.2s ease;
-
-
 }
 
 button:hover {
-  transform: scale(1.005);
   color: #d07979;
   background-color: white;
+  border: 1px solid brown;
 }

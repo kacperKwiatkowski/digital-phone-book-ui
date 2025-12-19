@@ -1,6 +1,4 @@
-<div *ngIf="actionMessage$ | async as message">
-  <div id="action-wrapper">
+<div id="action-wrapper" *ngIf="actionMessage$ | async as message">
     <div id="action-message">{{ message }}</div>
     <button (click)="closeMessage()" id="close-message-button"> DISMISS </button>
-  </div>
 </div>

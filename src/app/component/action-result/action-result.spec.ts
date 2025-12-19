@@ -42,7 +42,7 @@ describe('ActionResult', () => {
     // given
     component.ngOnInit();
 
-    let received: string | undefined;
+    let received: string | null = null;
     component.actionMessage$.subscribe(value => {
       received = value;
     });

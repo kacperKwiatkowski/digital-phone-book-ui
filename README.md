@@ -1,6 +1,16 @@
 # DigitalPhoneBookUi
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.3.
+
+## Project information
+
+Upon load, the application will accept a command from the user passed in the prompt bar to perform saving, finding, updating, or deleting records.
+
+All available records are displayed in the table below the prompt bar.
+
+Whenever a command is dispatched through the prompt bar, the application will display a message indicating the result of the command above the prompt bar.
+
+The application only accepts commands towards one record. Trying to perform a command on multiple records will result in an error message.
+
 
 ## Development server
 
@@ -9,7 +19,6 @@ To start a local development server, run:
 ```bash
 ng serve
 ```
-
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
 ## Code scaffolding
@@ -43,17 +52,3 @@ To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use th
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
